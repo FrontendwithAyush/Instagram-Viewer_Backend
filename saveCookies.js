@@ -3,11 +3,8 @@ const fs = require("fs");
 
 (async () => {
   const browser = await puppeteer.launch({
-    args: ["--no-sandbox"],
     headless: true,
-    executablePath:
-      process.env.PUPPETEER_EXECUTABLE_PATH ||
-      (await puppeteer.executablePath()),
+    args: ["--no-sandbox"],
   });
 
   const page = await browser.newPage();
