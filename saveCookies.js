@@ -2,11 +2,7 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 
 (async () => {
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
-  // Open full browser
+  const browser = await puppeteer.launch({ headless: true }); // Open full browser
   const page = await browser.newPage();
 
   await page.goto("https://www.instagram.com/accounts/login/", {
