@@ -97,6 +97,7 @@ app.get("/reels/:username", async (req, res) => {
       headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
+
     const page = await browser.newPage();
 
     await page.setUserAgent("Mozilla/5.0");
