@@ -23,8 +23,11 @@ app.get("/profile/:username", async (req, res) => {
   const username = req.params.username;
 
   const browser = await puppeteer.launch({
+    args: ["--no-sandbox"],
     headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    executablePath:
+      process.env.PUPPETEER_EXECUTABLE_PATH ||
+      (await puppeteer.executablePath()),
   });
   const page = await browser.newPage();
 
@@ -94,8 +97,11 @@ app.get("/reels/:username", async (req, res) => {
 
   try {
     const browser = await puppeteer.launch({
+      args: ["--no-sandbox"],
       headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      executablePath:
+        process.env.PUPPETEER_EXECUTABLE_PATH ||
+        (await puppeteer.executablePath()),
     });
 
     const page = await browser.newPage();
