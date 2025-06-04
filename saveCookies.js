@@ -2,10 +2,7 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 
 (async () => {
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+  const browser = await puppeteer.launch();
 
   const page = await browser.newPage();
 

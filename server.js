@@ -22,10 +22,7 @@ app.get("/", (req, res) => {
 app.get("/profile/:username", async (req, res) => {
   const username = req.params.username;
 
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox"],
-  });
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
   try {
@@ -93,10 +90,7 @@ app.get("/reels/:username", async (req, res) => {
   const reelVideoLinks = [];
 
   try {
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox"],
-    });
+    const browser = await puppeteer.launch();
 
     const page = await browser.newPage();
 
