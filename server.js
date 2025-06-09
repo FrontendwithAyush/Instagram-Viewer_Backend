@@ -1,6 +1,5 @@
 const express = require("express");
-// const puppeteer = require("puppeteer");
-const { chromium } = require("playwright");
+const puppeteer = require("puppeteer");
 const axios = require("axios");
 const fs = require("fs");
 const cors = require("cors");
@@ -23,10 +22,9 @@ app.get("/", (req, res) => {
 app.get("/profile/:username", async (req, res) => {
   const username = req.params.username;
 
-  // const browser = await puppeteer.launch({
-  //   headless: true,
-  // });
-  const browser = await chromium.launch({ headless: true });
+  const browser = await puppeteer.launch({
+    headless: true,
+  });
   const page = await browser.newPage();
 
   try {
@@ -94,10 +92,9 @@ app.get("/reels/:username", async (req, res) => {
   const reelVideoLinks = [];
 
   try {
-    // const browser = await puppeteer.launch({
-    //   headless: true,
-    // });
-    const browser = await chromium.launch({ headless: true });
+    const browser = await puppeteer.launch({
+      headless: true,
+    });
 
     const page = await browser.newPage();
 
