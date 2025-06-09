@@ -1,5 +1,6 @@
 const express = require("express");
-const puppeteer = require("puppeteer");
+// const puppeteer = require("puppeteer");
+const { chromium } = require("playwright");
 const axios = require("axios");
 const fs = require("fs");
 const cors = require("cors");
@@ -25,10 +26,7 @@ app.get("/profile/:username", async (req, res) => {
   // const browser = await puppeteer.launch({
   //   headless: true,
   // });
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+  const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
 
   try {
@@ -99,10 +97,7 @@ app.get("/reels/:username", async (req, res) => {
     // const browser = await puppeteer.launch({
     //   headless: true,
     // });
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
+    const browser = await chromium.launch({ headless: true });
 
     const page = await browser.newPage();
 
